@@ -10,9 +10,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
+const pport = process.env.PORTNO;
 mongoose
     .connect(process.env.MONGO_url)
-    .then(() => app.listen(5000))
+    .then(() => app.listen(pport))
     .then(() => console.log("Connected to the database and listining to the localhost 5000")
     )
 .catch((err) => console.log(err));
